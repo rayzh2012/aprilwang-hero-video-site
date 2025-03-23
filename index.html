@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>April Wang – Portfolio</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>April Wang Portfolio</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Montserrat&display=swap">
 </head>
 <body>
-
-  <!-- Hero Video Section -->
-  <section class="video-hero">
-    <video id="heroVideo" autoplay muted playsinline>
+  <!-- Hero Video (fade out after playing once) -->
+  <div id="videoIntro">
+    <video autoplay muted playsinline id="introVideo">
       <source src="https://cdn.pixabay.com/video/2023/05/10/164671-825599119_large.mp4" type="video/mp4">
-      Your browser does not support the video tag.
     </video>
-    <div class="video-overlay">
-      <h1>April Wang</h1>
-      <p>AI + Industrial Design</p>
-    </div>
-  </section>
+  </div>
 
-  <!-- Original April Style Section -->
-  <main class="original-layout">
+  <!-- April Wang Original Site Wrapper -->
+  <div id="originalSite" style="opacity:0;">
+    <header>
+      <h1>April Wang</h1>
+      <p>Industrial Design + AI</p>
+    </header>
+
     <section>
       <h2>Featured Work</h2>
-      <div class="grid">
-        <img src="public/work1.jpg" alt="Project 1" />
-        <img src="public/work2.jpg" alt="Project 2" />
+      <div class="projects">
+        <img src="assets/img/work1.jpg">
+        <img src="assets/img/work2.jpg">
       </div>
     </section>
-  </main>
 
-  <footer>
-    <p>&copy; 2024 April Wang</p>
-  </footer>
+    <footer>&copy;2024 April Wang</footer>
+  </div>
 
-  <script src="js/main.js"></script>
+  <script>
+    const video = document.getElementById('introVideo');
+    video.onended = () => {
+      document.getElementById('videoIntro').style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById('videoIntro').style.display = 'none';
+        document.getElementById('originalSite').style.opacity = 1;
+      }, 1000);
+    };
+  </script>
 </body>
 </html>
